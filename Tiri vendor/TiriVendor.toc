@@ -1,0 +1,11 @@
+## Interface: 20400
+## Title: TiriVendor
+## Name: TiriVendor
+## Notes: Assist with tirisgarde vendors
+## Author: Dmytro
+## Version: 1.0
+
+
+TiriVendor.xml
+TiriVendor.lua
+

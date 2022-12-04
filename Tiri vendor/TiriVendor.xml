@@ -1,0 +1,128 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Frame name="TiriVendor" parent="MerchantFrame" hidden="true">
+		<Size x="200" y="240"/>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset  x="250"/>
+			</Anchor>
+
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<!-- <Layer level="BACKGROUND">
+				<Texture name="$parentBgTexture" file="Interface\DialogFrame\UI-DialogBox-Background"/>
+			</Layer> -->
+			<Layer level="OVERLAY">
+				<!-- Start of FontString -->
+				<FontString text="Tiri Gems" inherits="GameFontNormalHuge" justifyH="CENTER" justifyV="MIDDLE" setAllPoints="true" name="$parent_TopString">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!-- end of FontString -->
+				<FontString text="Select Gem:" inherits="GameFontNormal" justifyH="CENTER" justifyV="MIDDLE" setAllPoints="true" name="$parent_selectString">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parent_TopString" relativePoint="BOTTOM">
+							<Offset>
+								<AbsDimension y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!-- end of FontString -->
+				<FontString text="Amount of Gems:" inherits="GameFontNormal" justifyH="CENTER" justifyV="MIDDLE" setAllPoints="true">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parent_selectString" relativePoint="BOTTOM">
+							<Offset>
+								<AbsDimension y="-50"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!-- end of FontString -->
+			</Layer>
+		</Layers>
+		<Frames name="$parent_MainContainer">
+			<EditBox name="$parent_Input" parentKey="input" letters="2" numeric="true" autoFocus="false" inherits= "InputBoxTemplate">
+				<Size x="50" y="20"/>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_selectString" relativePoint="BOTTOM">
+						<Offset y="-80"/>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size x="50" y="20" />
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="-10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size x="50" y="20" />
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset x="8" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnEscapePressed>
+self:ClearFocus()
+					</OnEscapePressed>
+
+				</Scripts>
+
+				<FontString inherits="GameFontHighlight"/>
+			</EditBox>
+			<!-- end of EditBox -->
+			<!-- BUTTON -->
+			<Button name="ButtonTest" inherits="GameMenuButtonTemplate" text="Buy Gems">
+				<!-- <Size>
+					<AbsDimension x="70" y="20" />
+				</Size> -->
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_Input">
+						<Offset y="-40"/>
+
+
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+				this.tooltip = "Buy Gems";
+					</OnLoad>
+					<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_LEFT");
+				GameTooltip:SetText(this.tooltip);
+					</OnEnter>
+					<OnLeave>
+				GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>
