@@ -21,9 +21,6 @@
 			</EdgeSize>
 		</Backdrop>
 		<Layers>
-			<!-- <Layer level="BACKGROUND">
-				<Texture name="$parentBgTexture" file="Interface\DialogFrame\UI-DialogBox-Background"/>
-			</Layer> -->
 			<Layer level="OVERLAY">
 				<!-- Start of FontString -->
 				<FontString text="Tiri Gems" inherits="GameFontNormalHuge" justifyH="CENTER" justifyV="MIDDLE" setAllPoints="true" name="$parent_TopString">
@@ -60,7 +57,7 @@
 		</Layers>
 		<Frames name="$parent_MainContainer">
 			<EditBox name="$parent_Input" parentKey="input" letters="2" numeric="true" autoFocus="false" inherits= "InputBoxTemplate">
-				<Size x="50" y="20"/>
+				<Size x="50" y="30"/>
 				<Anchors>
 					<Anchor point="TOP" relativeTo="$parent_selectString" relativePoint="BOTTOM">
 						<Offset y="-80"/>
@@ -95,11 +92,11 @@ self:ClearFocus()
 
 				</Scripts>
 
-				<FontString inherits="GameFontHighlight"/>
+				<FontString inherits="GameFontHighlightHuge"/>
 			</EditBox>
 			<!-- end of EditBox -->
 			<!-- BUTTON -->
-			<Button name="ButtonTest" inherits="GameMenuButtonTemplate" text="Buy Gems">
+			<Button name="$parent_ButtonGems" inherits="GameMenuButtonTemplate" text="Buy Gems">
 				<!-- <Size>
 					<AbsDimension x="70" y="20" />
 				</Size> -->
@@ -121,6 +118,9 @@ self:ClearFocus()
 					<OnLeave>
 				GameTooltip:Hide();
 					</OnLeave>
+					<OnClick>
+						ButtonGemsHandler();
+					</OnClick>
 				</Scripts>
 			</Button>
 		</Frames>
