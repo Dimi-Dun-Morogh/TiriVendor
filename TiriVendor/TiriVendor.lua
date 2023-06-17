@@ -37,20 +37,20 @@ local gemsArr = {
   {"12 Spell crit", 98}, {"12 Crit  Strike", 99}, {"12 Defence Rating", 100}
 }
 
-TiriGemsCurrentSelect = nil
+TiriGemsCurrentSelect = gemsArr[1][2]
 
 local function OnClick()
   UIDropDownMenu_SetSelectedID(TiriVendor_DropDownMenuTest, this:GetID())
   -- message(this.value)
   TiriGemsCurrentSelect = this.value
+  print(this.value)
 end
 -- init  TiriGemsCurrentSelect with first value
 local function initialize(self, level)
   local info = UIDropDownMenu_CreateInfo()
-  for i = 1, 8 do
+  for i = 1, #(gemsArr) do
       local key = gemsArr[i][1]
       local value = gemsArr[i][2]
-      if (i == 1) then TiriGemsCurrentSelect = value end
       info = UIDropDownMenu_CreateInfo()
       info.text = key
       info.value = value
@@ -78,9 +78,8 @@ frame:RegisterEvent("MERCHANT_CLOSED")
 local function eventHandler(self, event, ...)
   if (event == "MERCHANT_SHOW" and UnitName("target") == "Kianna") then
       TiriVendor:Show()
-
   elseif (event == "MERCHANT_CLOSED") then
-      TiriVendor:Hide()
+      TiriVendor:Hide();
 
       return;
   end
@@ -89,5 +88,9 @@ frame:SetScript("OnEvent", eventHandler);
 
 -- default value for input
 TiriVendor_Input:SetText(1);
+ function print(text)
 
--- /run BuyMerchantItem(100 {3, quantity})
+		DEFAULT_CHAT_FRAME:AddMessage(text)
+
+end
+
